@@ -28,4 +28,4 @@ $ sudo ln -s ~/anaconda3/ /opt/conda  # this step is optional
 $ jupyter lab --no-browser --port=8888 --ip=0.0.0.0 --notebook-dir=/
 ```
 
-After this step, you should be able to use public ip to visit Jupyter Lab with new kernal called "open=mmlab".
+After this step, you should be able to use public ip to visit Jupyter Lab with new kernal -- "open-mmlab".
