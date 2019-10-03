@@ -3,7 +3,7 @@ Object Detection
 
 ## Use Jupyter Lab in the container
 
-a. Request a container
+### Request a container
 
 When submit a new container request with "algorithm-segmentation" template, in commmand, 
 replace the following commmand
@@ -16,7 +16,7 @@ runuser $$username$$ -c "export HOME=/home/$$username$$/ && export LD_LIBRARY_PA
 ```
 to keep the main container thread sleep, so we can install another ipython kernel.
 
-b. Install conda if necessary, or Add exist conda path to $PATH, editing '~/.bashrc' is not working in container for some reason. 
+### Install conda if necessary, or Add exist conda path to $PATH, editing '~/.bashrc' is not working in container for some reason. 
 ```shell
 $ export PATH=$PATH:~/anaconda3/bin
 
@@ -28,3 +28,4 @@ $ sudo ln -s ~/anaconda3/ /opt/conda  # this step is optional
 $ jupyter lab --no-browser --port=8888 --ip=0.0.0.0 --notebook-dir=/
 ```
 
+After this step, you should be able to use public ip to visit Jupyter Lab with new kernal called "open=mmlab".
