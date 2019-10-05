@@ -1,5 +1,5 @@
 # Object detection 
-Object Detection
+
 
 ## Use Jupyter Lab in the container
 
@@ -29,3 +29,26 @@ $ jupyter lab --no-browser --port=8888 --ip=0.0.0.0 --notebook-dir=/
 ```
 
 After this step, you should be able to use public ip to visit Jupyter Lab with new kernal -- "open-mmlab".
+
+
+
+## Use MMDetection Training the container
+
+Edit the config file first. 
+*Important*: The default learning rate in config files is for 8 GPUs and 2 img/gpu (batch size = 8*2 = 16). According to the Linear Scaling Rule, you need to set the learning rate proportional to the batch size if you use different GPUs or images per GPU, e.g., lr=0.01 for 4 GPUs * 2 img/gpu and lr=0.08 for 16 GPUs * 4 img/gpu.
+
+Multi GPUs
+```shell
+$ ~/code/mmdetection/tools/dist_train.sh /data/wedward/configs/faster_rcnn_x101_32x4d_fpn_1x_apulis_train_openimgs_with_test_set.py 4 --validate
+```
+
+Restart the job if failed. Kill processes to release GPU memory.
+```shell
+$ ps -aef
+$ kill -9 111 222 444
+```
+
+Single GPUs example
+```shell
+$ python ~/code/mmdetection/tools/train.py 191003_cascades_rcnn/faster_rcnn_x101_32x4d_fpn_1x_apulis.py --gpus 1 --work_dir  $WORK_DIR
+```
